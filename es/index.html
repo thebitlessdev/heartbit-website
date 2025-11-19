@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta
+	  name="description"
+	  content="HeartBit son dos pequeños dispositivos conectados por Internet: cuando pulsas tu botón, el corazón del otro se ilumina. Una forma mínima y física de decir 'estoy pensando en ti'."
+	/>
+
+  <meta charset="UTF-8" />
+  <link rel="alternate" href="./index.html" hreflang="en">
+  <link rel="alternate" href="./es/index.html" hreflang="es">
+  <link rel="canonical" href="./es/index.html">
+  <title>HeartBit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+ <style>
+  body {
+    font-family: "Space Grotesk", sans-serif;
+  }
+
+  .heartbit-glow {
+    box-shadow:
+      0 0 40px rgba(236, 72, 153, 0.35),
+      0 0 90px rgba(56, 189, 248, 0.20);
+  }
+
+  .heartbeat {
+    animation: heartbeat 3s ease-in-out infinite;
+    transform-origin: center;
+  }
+  
+  @keyframes heartbeat {
+    0%   { transform: scale(1); }
+    10%  { transform: scale(1.10); }
+    25%  { transform: scale(1); }
+    100% { transform: scale(1); }
+  }
+
+  .pulse-soft {
+    animation: pulse-soft 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse-soft {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.03); opacity: 0.95; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .pixel {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.25rem;
+    background: radial-gradient(circle at 30% 30%,
+                rgba(255, 255, 255, 0.9),
+                rgba(244, 114, 182, 1));
+    box-shadow: 0 0 12px rgba(244, 114, 182, 0.9);
+    
+    opacity: 0;               
+    transform: scale(0.8);    
+    transition:
+      opacity 0.45s ease-out,
+      transform 0.45s ease-out,
+      box-shadow 0.45s ease-out;
+  }
+
+  .pixel-on {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .waitlist-card {
+    animation: waitlistGlow 7s ease-in-out infinite;
+  }
+
+  @keyframes waitlistGlow {
+    0%, 100% {
+      box-shadow:
+        0 0 30px rgba(236, 72, 153, 0.25),
+        0 0 80px rgba(56, 189, 248, 0.20);
+    }
+    50% {
+      box-shadow:
+        0 0 45px rgba(236, 72, 153, 0.40),
+        0 0 110px rgba(56, 189, 248, 0.30);
+    }
+  }
+  
+  html {
+  scroll-behavior: smooth;
+  }
+
+</style>
+
+</head>
+
+<body class="bg-black text-zinc-100 antialiased">
+  <div class="fixed inset-0 -z-10 overflow-hidden">
+    <div class="absolute -top-40 -left-32 h-80 w-80 rounded-full bg-fuchsia-500/20 blur-3xl"></div>
+    <div class="absolute top-40 -right-20 h-80 w-80 rounded-full bg-sky-500/20 blur-3xl"></div>
+    <div class="absolute bottom-[-6rem] left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-violet-500/20 blur-3xl"></div>
+  </div>
+
+  <main class="min-h-screen px-6 py-8 sm:px-10 lg:px-20">
+    <header class="flex items-center justify-between py-2">
+	<div class="flex items-center gap-4 text-xs text-zinc-500">
+	  <a href="../index.html" class="hover:text-zinc-200 transition-colors">EN</a>
+	  <span class="text-zinc-700">/</span>
+	  <a href="./index.html" class="text-fuchsia-400 font-semibold">ES</a>
+	</div>
+      <div class="flex items-center gap-2">
+        <div class="h-7 w-7 rounded-xl bg-gradient-to-br from-fuchsia-500 via-rose-500 to-sky-400 heartbit-glow"></div>
+        <span class="text-sm tracking-[0.2em] uppercase text-zinc-400">
+          HeartBit
+        </span>
+      </div>
+      <nav class="hidden text-xs sm:flex items-center gap-6 text-zinc-500">
+        <a href="#que-es" class="hover:text-zinc-200 transition-colors">About</a>
+        <a href="#como-funciona" class="hover:text-zinc-200 transition-colors">Cómo funciona</a>
+        <a href="#waitlist" class="hover:text-zinc-200 transition-colors">Waitlist</a>
+      </nav>
+    </header>
+
+    <section class="mt-12 lg:mt-20 grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-center">
+      <div>
+        <p class="text-xs tracking-[0.35em] uppercase text-zinc-500 mb-4">
+          two devices · one connection
+        </p>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-light leading-tight">
+          HeartBit: dos corazones<br />
+          <span class="font-semibold text-zinc-50"><span class="text-fuchsia-400">conectados </span>a distancia.</span>
+        </h1>
+
+        <p class="mt-6 max-w-xl text-sm sm:text-base text-zinc-400">
+          HeartBit son dos pequeños dispositivos físicos conectados por Internet.
+          Cada vez que una persona pulsa su botón, el corazón de LEDs del otro se ilumina.
+          Sin texto ni notificaciones, solo una señal clara: <span class="text-zinc-200">estoy pensando en ti.</span>
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a
+            href="#waitlist"
+            class="inline-flex items-center justify-center rounded-full border border-fuchsia-400/60 bg-fuchsia-500/20 px-6 py-2.5 text-sm font-medium text-fuchsia-100 backdrop-blur-sm hover:bg-fuchsia-500/30 hover:border-fuchsia-300 transition-all"
+          >
+            Join the waitlist
+          </a>
+        </div>
+
+        <p class="mt-4 text-[0.7rem] text-zinc-500 uppercase tracking-[0.25em]">
+          first limited drop · 2026
+        </p>
+      </div>
+
+      <div class="flex justify-center lg:justify-end">
+        <div class="relative w-full max-w-xs aspect-square">
+          <div class="absolute inset-0 rounded-3xl bg-gradient-to-br from-zinc-900/80 via-zinc-950 to-zinc-900/90 border border-zinc-800/80 backdrop-blur-xl heartbit-glow pulse-soft"></div>
+
+          <div class="relative h-full w-full rounded-3xl p-6 flex flex-col justify-between">
+            <div class="flex items-center justify-between text-[0.65rem] text-zinc-500">
+              <span class="tracking-[0.2em] uppercase">heartbit</span>
+              <span class="text-zinc-600">prototype 01</span>
+            </div>
+
+			<div class="flex items-center justify-center">
+			  <div class="heartbeat">
+				<div class="grid grid-cols-7 gap-[2px]">
+				  <div></div>
+				  <div class="pixel"></div>
+				  <div class="pixel"></div>
+				  <div></div>
+				  <div class="pixel"></div>
+				  <div class="pixel"></div>
+				  <div></div>
+
+				  <div class="pixel"></div>
+				  <div class="pixel"></div>
+				  <div class="pixel"></div>
+				  <div class="pixel"></div>
+				  <div class="pixel"></div>
+				  <div class="pixel"></div>
+				  <div class="pixel"></div>
+
+				  <div class="pixel"></div>
+				  <div class="pixel"></div>
+				  <div class="pixel"></div>
+				  <div class="pixel"></div>
+				  <div class="pixel"></div>
+				  <div class="pixel"></div>
+				  <div class="pixel"></div>
+
+				  <div></div>
+				  <div class="pixel"></div>
+				  <div class="pixel"></div>
+				  <div class="pixel"></div>
+				  <div class="pixel"></div>
+				  <div class="pixel"></div>
+				  <div></div>
+
+				  <div></div>
+				  <div></div>
+				  <div class="pixel"></div>
+				  <div class="pixel"></div>
+				  <div class="pixel"></div>
+				  <div></div>
+				  <div></div>
+
+				  <div></div>
+				  <div></div>
+				  <div></div>
+				  <div class="pixel"></div>
+				  <div></div>
+				  <div></div>
+				  <div></div>
+				</div>
+			  </div>
+			</div>
+
+            <div class="flex items-center justify-between">
+              <span class="text-[0.65rem] text-zinc-500 tracking-[0.24em] uppercase">
+                linked device
+              </span>
+              <div class="flex items-center gap-2">
+                <span class="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.9)]"></span>
+                <span class="text-[0.65rem] text-zinc-400">online</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="que-es" class="mt-20 lg:mt-24">
+      <div class="max-w-2xl">
+        <h2 class="text-sm tracking-[0.35em] uppercase text-zinc-500">
+          what is heartbit
+        </h2>
+        <p class="mt-4 text-xl sm:text-2xl text-zinc-100">
+          Un vínculo físico entre dos personas, construido con electrónica e Internet.
+        </p>
+        <p class="mt-4 text-sm sm:text-base text-zinc-400">
+          HeartBit viene siempre en pareja: un dispositivo para ti y otro para alguien importante.
+          Ambos se conectan a la red y quedan enlazados.
+          Cada vez que una persona pulsa su botón, el corazón del otro se enciende al instante.
+        </p>
+        <p class="mt-4 text-sm sm:text-base text-zinc-400">
+          No sustituye a un mensaje, ni a una llamada. Es otra capa: una forma sencilla y silenciosa de decir
+          <span class="text-zinc-200">&ldquo;estoy aquí contigo&rdquo;</span> sin tener que buscar palabras.
+        </p>
+      </div>
+    </section>
+
+    <section id="como-funciona" class="mt-20 lg:mt-24">
+      <h2 class="text-sm tracking-[0.35em] uppercase text-zinc-500">
+        how it works
+      </h2>
+
+      <div class="mt-6 grid gap-6 sm:grid-cols-3 text-sm text-zinc-300">
+        <div class="rounded-2xl border border-zinc-800/80 bg-zinc-950/60 p-5 backdrop-blur-sm">
+          <p class="text-[0.7rem] uppercase tracking-[0.25em] text-zinc-500 mb-2">
+            1 · conexión
+          </p>
+          <p>
+            Conectas cada HeartBit a tu WiFi. Se enlazan mediante un servidor seguro y quedan emparejados como pareja.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-zinc-800/80 bg-zinc-950/60 p-5 backdrop-blur-sm">
+          <p class="text-[0.7rem] uppercase tracking-[0.25em] text-zinc-500 mb-2">
+            2 · gesto
+          </p>
+          <p>
+            Cuando tú pulsas tu botón, se envía una señal a través de Internet. El HeartBit de la otra persona se ilumina y late.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-zinc-800/80 bg-zinc-950/60 p-5 backdrop-blur-sm">
+          <p class="text-[0.7rem] uppercase tracking-[0.25em] text-zinc-500 mb-2">
+            3 · respuesta
+          </p>
+          <p>
+            Ella puede responder pulsando su propio HeartBit. Entonces, el que se ilumina eres tú.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-20 lg:mt-24">
+      <h2 class="text-sm tracking-[0.35em] uppercase text-zinc-500">moments</h2>
+      <p class="mt-4 text-lg sm:text-xl text-zinc-100">
+        Tecnología mínima para una conexión muy humana.
+      </p>
+
+      <div class="mt-8 grid gap-6 sm:grid-cols-3 text-sm text-zinc-300">
+        <div class="rounded-2xl border border-zinc-800/80 bg-zinc-950/60 p-5 backdrop-blur-sm">
+          Parejas a distancia que se mandan un latido antes de dormir.
+        </div>
+        <div class="rounded-2xl border border-zinc-800/80 bg-zinc-950/60 p-5 backdrop-blur-sm">
+          Amigos que celebran pequeñas victorias con un destello de luz.
+        </div>
+        <div class="rounded-2xl border border-zinc-800/80 bg-zinc-950/60 p-5 backdrop-blur-sm">
+          Familiares que se sienten cerca aunque estén en ciudades distintas.
+        </div>
+      </div>
+    </section>
+
+    <section id="waitlist" class="mt-24 mb-20 px-2 sm:px-4 flex justify-center">
+	  <div
+		class="waitlist-card relative w-full max-w-3xl overflow-hidden rounded-[2rem] border border-fuchsia-500/25 bg-gradient-to-b from-zinc-950/95 via-black/90 to-zinc-950/95 px-6 sm:px-10 py-10 sm:py-12 backdrop-blur-xl"
+	  >
+		<div class="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-fuchsia-400/60 to-transparent opacity-80"></div>
+
+		<p class="text-xs tracking-[0.35em] uppercase text-fuchsia-400/80">
+		  first drop · limited
+		</p>
+
+		<h2 class="mt-4 text-3xl sm:text-4xl font-medium text-zinc-50">
+		  Primera tirada muy limitada.
+		</h2>
+
+		<p class="mt-4 text-sm sm:text-base text-zinc-400 max-w-2xl">
+		  Estamos preparando la primera serie de HeartBit.
+		  Si quieres ser de las primeras personas en tener uno, deja tu correo.
+		  Te avisaremos sólo cuando el dispositivo esté listo.
+		</p>
+
+		<form
+		  id="waitlist-form"
+		  class="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center"
+		>
+		  <input
+			id="email"
+			name="email"
+			type="email"
+			required
+			placeholder="tu@email.com"
+			class="flex-1 rounded-full border border-zinc-700/80 bg-black/40 px-5 py-3 text-sm text-zinc-100 placeholder:text-zinc-500 outline-none focus:border-fuchsia-400/80 focus:ring-1 focus:ring-fuchsia-500/50"
+		  />
+		  <button
+			type="submit"
+			class="rounded-full border border-fuchsia-400/60 bg-fuchsia-600/30 px-8 py-3 text-sm font-medium text-fuchsia-100 backdrop-blur-sm hover:bg-fuchsia-600/45 hover:border-fuchsia-300 transition-all"
+		  >
+			Apuntarme
+		  </button>
+		</form>
+
+		<p id="waitlist-message" class="mt-3 text-[0.7rem] text-zinc-500"></p>
+
+		<p class="mt-4 text-[0.75rem] text-zinc-500">
+		  Sin spam. Sin newsletters interminables. Solo un correo cuando llegue el momento.
+		</p>
+		<p class="mt-1 text-[0.7rem] text-zinc-600">
+		  Al enviar tu correo aceptas que lo usemos únicamente para informarte sobre el lanzamiento de HeartBit.
+		</p>
+
+	  </div>
+	</section>
+
+    <footer class="border-t border-zinc-900/80 py-6 text-[0.75rem] text-zinc-500 flex flex-col sm:flex-row items-center justify-between gap-2">
+      <span>© <span class="text-zinc-300">HeartBit</span> · TheBitless · 2025</span>
+      <div class="flex items-center gap-4">
+        <a href="mailto:hello@thebitless.com" class="hover:text-zinc-200 transition-colors">Contacto</a>
+		<a href="./privacy.html" class="hover:text-zinc-200 transition-colors">Privacidad</a>
+      </div>
+    </footer>
+  </main>
+  
+  <script>
+  const form = document.getElementById('waitlist-form');
+  const messageEl = document.getElementById('waitlist-message');
+
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxmq37tUoaHce1fPl0i68JpL2Q-yXMp5J-SOcn5tETRWJL_IiI-g6EyRmoWTHYcrEU5/exec';
+
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const emailValue = form.email.value.trim();
+      if (!emailValue) return;
+
+      const data = new URLSearchParams();
+      data.append('email', emailValue);
+
+      messageEl.textContent = 'Enviando...';
+      messageEl.classList.remove('text-emerald-400', 'text-red-400');
+      messageEl.classList.add('text-zinc-500');
+
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: data.toString()
+      })
+        .then(() => {
+          messageEl.textContent = '¡Listo! Te hemos añadido a la lista de espera ❤';
+          messageEl.classList.remove('text-zinc-500', 'text-red-400');
+          messageEl.classList.add('text-emerald-400');
+          form.reset();
+        })
+        .catch(() => {
+          messageEl.textContent = 'Ha habido un problema al enviar tu correo. Inténtalo de nuevo más tarde.';
+          messageEl.classList.remove('text-zinc-500', 'text-emerald-400');
+          messageEl.classList.add('text-red-400');
+        });
+    });
+  }
+
+  (function () {
+    const pixels = Array.from(document.querySelectorAll('.heartbeat .pixel'));
+    if (!pixels.length) return;
+
+    pixels.forEach(p => p.classList.remove('pixel-on'));
+
+    const sequence = [
+      14, 20,
+      13, 15, 19, 21,
+      7, 24, 6, 8, 23, 25,
+      12, 16, 18, 22,
+      5, 9,
+      26,
+      1, 2, 11, 17,
+      0, 3, 4, 10
+    ];
+
+    sequence.forEach((pixelIndex, step) => {
+      const pixel = pixels[pixelIndex];
+      if (!pixel) return;
+
+      setTimeout(() => {
+        pixel.classList.add('pixel-on');
+      }, 70 * step);
+    });
+  })();
+
+</script>
+
+</body>
+</html>
